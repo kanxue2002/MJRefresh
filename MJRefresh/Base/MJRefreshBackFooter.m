@@ -51,11 +51,11 @@
     if (self.scrollView.isDragging) {
         self.pullingPercent = pullingPercent;
         // 普通 和 即将刷新 的临界点
-        CGFloat normal2pullingOffsetY = happenOffsetY + self.mj_h;
+        CGFloat normal2pullingOffsetY = self.mj_h;
         
         if (self.state == MJRefreshStateIdle && currentOffsetY > normal2pullingOffsetY) {
             // 转为即将刷新状态
-            self.state = MJRefreshStatePulling;
+            [self beginRefreshing];
         } else if (self.state == MJRefreshStatePulling && currentOffsetY <= normal2pullingOffsetY) {
             // 转为普通状态
             self.state = MJRefreshStateIdle;
